@@ -10,7 +10,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 const MovieScreen = () => {
 
   const {id}=useLocalSearchParams();
-  const {movieQuery}=useMovie(+id);
+  const {movieQuery,CastQuery}=useMovie(+id);
 
 if(movieQuery.isLoading || !movieQuery.data){
   return (
@@ -31,7 +31,7 @@ if(movieQuery.isLoading || !movieQuery.data){
       ></MovieHeader>
 
       <MovieDescription movie={movieQuery.data}></MovieDescription>
-    <MovieCast></MovieCast>
+    <MovieCast cast={CastQuery.data ?? []} />
     </ScrollView>
   )
 }
